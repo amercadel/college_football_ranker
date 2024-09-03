@@ -1,3 +1,5 @@
+## College Football Top 25 using the Bradley-Terry Method (as of 9/3/2024)
+
 |   ranking | school             |   rank_val |   rank |
 |----------:|:-------------------|-----------:|-------:|
 |         1 | Southern Methodist |    2.21813 |      1 |
