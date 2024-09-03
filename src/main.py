@@ -20,12 +20,14 @@ def bradleyTerryDriver(n_iterations):
     ranking_dict = sorted(ranking_dict.items(), key=lambda x:x[1], reverse = True)
     ranking = pd.DataFrame(ranking_dict, columns = ["school", "rank_val"])
     ranking["rank"] = ranking["rank_val"].rank(ascending=False).astype(int)
-    print(ranking.head(25))
+    disp = ranking.head(25).reset_index().rename({"index": "ranking"}, axis = 'columns')
+    disp['ranking'] = disp['ranking'] + 1
+    print(disp.to_markdown(index = False))
     return ranking
 
 def main():
-    n_iterations = sys.argv[1]
-    bradleyTerryDriver(10)
+    n_iterations = int(sys.argv[1])
+    bradleyTerryDriver(n_iterations)
 
 if __name__ == "__main__":
     main()
