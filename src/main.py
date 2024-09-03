@@ -1,6 +1,10 @@
-import sys
 from utils import *
 from bradleyTerry import *
+
+option_map = {"1": "(1) Display Alex's Top 25 Rankings",
+                      "2": "(2) Display the predictions for this week's games",
+                      "3": "(3) Display the prediction for a hypothetical game",
+                      "q": "(q) Exit"}
 
 def bradleyTerryDriver(n_iterations):
     CURRENT_WEEK = getCurrentWeek()
@@ -15,7 +19,7 @@ def bradleyTerryDriver(n_iterations):
     parameter_vec = [1 for x in range(len(schools) + 3)]
     
     for i in range(n_iterations):
-       iterate(parameter_vec, matrix)
+       parameter_vec = iterate(parameter_vec, matrix)
     ranking_dict = {schools[i]: parameter_vec[i] for i in range(len(schools))}
     ranking_dict = sorted(ranking_dict.items(), key=lambda x:x[1], reverse = True)
     ranking = pd.DataFrame(ranking_dict, columns = ["school", "rank_val"])
@@ -25,9 +29,30 @@ def bradleyTerryDriver(n_iterations):
     print(disp.to_markdown(index = False))
     return ranking
 
+def displayOptions():
+    for key in option_map.keys():
+            print(option_map[key])
+    
+
+
 def main():
-    n_iterations = int(sys.argv[1])
-    bradleyTerryDriver(n_iterations)
+    
+    while True:
+        
+        print("Welcome to Alex's College Football Info Hub")
+        displayOptions()
+        command = input("Make a selection: ")
+        if command == "1":
+            bradleyTerryDriver(1)
+        elif command == "2":
+            pass
+        elif command == "3":
+            pass
+        elif command == "q":
+            break
+        else:
+            print("That selection is not recognized. Please make an appropriate selection")
+
 
 if __name__ == "__main__":
     main()
