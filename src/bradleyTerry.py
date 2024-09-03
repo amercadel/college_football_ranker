@@ -17,7 +17,6 @@ def iterate(parameter_vector, w_l_matrix):
     divisor = geometric_mean ** (1 / len(parameter_vector))
     for i in range(len(parameter_vector)):
       parameter_vector[i] = parameter_vector[i] / divisor
-    return parameter_vector
 
 def createMatrix(schools):
   schools.sort()

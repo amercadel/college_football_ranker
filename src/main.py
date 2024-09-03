@@ -19,7 +19,7 @@ def bradleyTerryDriver(n_iterations):
     parameter_vec = [1 for x in range(len(schools) + 3)]
     
     for i in range(n_iterations):
-       parameter_vec = iterate(parameter_vec, matrix)
+       iterate(parameter_vec, matrix)
     ranking_dict = {schools[i]: parameter_vec[i] for i in range(len(schools))}
     ranking_dict = sorted(ranking_dict.items(), key=lambda x:x[1], reverse = True)
     ranking = pd.DataFrame(ranking_dict, columns = ["school", "rank_val"])
@@ -43,7 +43,7 @@ def main():
         displayOptions()
         command = input("Make a selection: ")
         if command == "1":
-            bradleyTerryDriver(1)
+            bradleyTerryDriver(10)
         elif command == "2":
             pass
         elif command == "3":
