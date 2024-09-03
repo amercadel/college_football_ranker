@@ -32,10 +32,13 @@ def createMatrix(schools):
 
 def createWinsDict(schedule_data, schools):
   wins_dict = {school: [] for school in schools}
+  losses_dict = {school: [] for school in schools}
   for school in schools:
     wins = schedule_data[(schedule_data.Winner == school)]["Loser"].tolist()
     wins_dict[school] = wins
-  return wins_dict
+    losses = schedule_data[(schedule_data.Loser == school)]["Winner"].tolist()
+    losses_dict[school] = losses
+  return wins_dict, losses_dict
 
 def populateMatrix(matrix, wins_dict, index_dict, schools):
   for i in range(len(matrix) - 4):
