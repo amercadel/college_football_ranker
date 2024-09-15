@@ -43,7 +43,7 @@ def bradleyTerryDriver(n_iterations):
 
     ranking["wins"] = ranking["school"].map(wins_dict).apply(len)
     ranking['losses'] = ranking["school"].map(losses_dict).apply(len)
-    ranking['Strength of Schedule'] = ranking['school'].apply(getSOS)
+    # ranking['Strength of Schedule'] = ranking['school'].apply(getSOS)
     ranking["rank"] = ranking["rank_val"].rank(ascending=False).astype(int)
     disp = ranking.head(25).reset_index().rename({"index": "ranking"}, axis = 'columns')
     disp['ranking'] = disp['ranking'] + 1
@@ -53,29 +53,30 @@ def bradleyTerryDriver(n_iterations):
 
 
 
-def displayOptions():
-    for key in option_map.keys():
-            print(option_map[key])
+# def displayOptions():
+#     for key in option_map.keys():
+#             print(option_map[key])
     
 
 
 def main():
     
-    while True:
+    # while True:
         
-        print("Welcome to Alex's College Football Info Hub")
-        displayOptions()
-        command = input("Make a selection: ")
-        if command == "1":
-            bradleyTerryDriver(10)
-        elif command == "2":
-            pass
-        elif command == "3":
-            pass
-        elif command == "q":
-            break
-        else:
-            print("That selection is not recognized. Please make an appropriate selection")
+    #     print("Welcome to Alex's College Football Info Hub")
+    #     displayOptions()
+    #     command = input("Make a selection: ")
+    #     if command == "1":
+    #         bradleyTerryDriver(10)
+    #     elif command == "2":
+    #         pass
+    #     elif command == "3":
+    #         pass
+    #     elif command == "q":
+    #         break
+    #     else:
+    #         print("That selection is not recognized. Please make an appropriate selection")
+    bradleyTerryDriver(10)
 
 
 if __name__ == "__main__":
